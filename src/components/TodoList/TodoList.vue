@@ -3,10 +3,11 @@
         <div class="container">
             <h1 class="title">Incomplete Tasks</h1>
             <div class="columns is-multiline">
-                <TodoListItem v-for="item in todoListArray"
+                <TodoListItem v-for="item in incompleteTodoListArray"
                               :key="item.id"
                               :itemId="item.id"
-                              v-if="!item.done"
+                              :complete="item.done"
+                              :description="item.description"
                 >
                     {{ item.description }}
                 </TodoListItem>
@@ -18,6 +19,8 @@
                 <TodoListItem v-for="item in completeTodoListArray"
                               :key="item.id"
                               :itemId="item.id"
+                              :complete="item.done"
+                              :description="item.description"
                 >
                     {{ item.description }}
                 </TodoListItem>
@@ -37,6 +40,9 @@
             todoListArray: Array,
         },
         computed: {
+            incompleteTodoListArray() {
+                return this.todoListArray.filter(item => ! item.done);
+            },
             completeTodoListArray() {
                 return this.todoListArray.filter(item => item.done);
             }

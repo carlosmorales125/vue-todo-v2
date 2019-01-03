@@ -1,23 +1,29 @@
 <template>
     <div class="column">
         <div class="card">
-            <div class="card-content">
-                <p class="title">
+            <div class="card-content" v-if="editing">
+                <input class="input"
+                       type="text"
+                       v-model="description"
+                >
+            </div>
+            <div class="card-content" v-else>
+                <p class="title" >
                     <slot></slot>
                 </p>
             </div>
             <footer class="card-footer">
                 <a href="#"
                    class="card-footer-item"
-                   @click="Edit"
+                   @click="editing ? DoneEditing() : Edit()"
                 >
-                    Edit
+                    {{ editOrDoneText }}
                 </a>
                 <a href="#"
                    class="card-footer-item"
-                   @click="Complete"
+                   @click="CompleteOrRestore"
                 >
-                    Complete
+                    {{ completeOrRestoreText }}
                 </a>
                 <a href="#"
                    class="card-footer-item"
@@ -35,22 +41,38 @@
     export default {
         name: 'todolistitem',
         props: {
-            itemId: Number
+            description: String,
+            itemId: Number,
+            complete: Boolean
         },
         methods: {
             Edit() {
-                // this will need a little more attention.
-                // I need to create a form element that takes
-                // the new description
-                EventBus.$emit('editTask', this.itemId);
+                this.editing = true;
             },
-            Complete() {
-                EventBus.$emit('completeTask', this.itemId);
+            DoneEditing() {
+                EventBus.$emit('editTask', {id:this.itemId, description:this.description});
+                this.editing = false;
+            },
+            CompleteOrRestore() {
+                EventBus.$emit('completeOrRestoreTask', this.itemId);
             },
             Delete() {
                 EventBus.$emit('deleteTask', this.itemId);
             }
         },
+        data() {
+            return {
+                editing: false
+            }
+        },
+        computed: {
+            completeOrRestoreText() {
+                return this.complete ? 'Restore' : 'Complete';
+            },
+            editOrDoneText() {
+                return this.editing ? 'Done' : 'Edit';
+            }
+        }
     };
 </script>
 <style>

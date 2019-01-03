@@ -65,19 +65,36 @@
         },
         mounted() {
             EventBus.$on('editTask', taskData => {
-                console.log(`here is your taskData: ${taskData}`);
+                this.todoList.forEach(item => {
+                    if (item.id === taskData.id) {
+                        item.description = taskData.description;
+                    }
+                });
             });
 
-            EventBus.$on('completeTask', taskId => {
+            EventBus.$on('completeOrRestoreTask', taskId => {
                 this.todoList.forEach(item => {
                     if (item.id === taskId) {
-                        item.done = true;
+                        if (!item.done) {
+                            item.done = true;
+                            return;
+                        }
+
+                        if (item.done) {
+                            item.done = false;
+                            return;
+                        }
                     }
                 });
             });
 
             EventBus.$on('deleteTask', taskId => {
-                console.log(`here is your taskId: ${taskId}`);
+                this.todoList.forEach((item, index, object) => {
+                    if (item.id === taskId) {
+                        object.splice(index, 1);
+                        return;
+                    }
+                })
             });
         }
     };
