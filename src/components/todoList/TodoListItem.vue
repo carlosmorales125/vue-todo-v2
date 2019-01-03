@@ -4,7 +4,7 @@
             <div class="card-content" v-if="editing">
                 <input class="input"
                        type="text"
-                       v-model="description"
+                       v-model="localDescription"
                 >
             </div>
             <div class="card-content" v-else>
@@ -43,14 +43,14 @@
         props: {
             description: String,
             itemId: Number,
-            complete: Boolean
+            complete: Boolean,
         },
         methods: {
             Edit() {
                 this.editing = true;
             },
             DoneEditing() {
-                EventBus.$emit('editTask', {id:this.itemId, description:this.description});
+                EventBus.$emit('editTask', {id:this.itemId, description:this.localDescription});
                 this.editing = false;
             },
             CompleteOrRestore() {
@@ -58,11 +58,12 @@
             },
             Delete() {
                 EventBus.$emit('deleteTask', this.itemId);
-            }
+            },
         },
         data() {
             return {
-                editing: false
+                editing: false,
+                localDescription: this.description,
             }
         },
         computed: {
@@ -71,8 +72,8 @@
             },
             editOrDoneText() {
                 return this.editing ? 'Done' : 'Edit';
-            }
-        }
+            },
+        },
     };
 </script>
 <style>

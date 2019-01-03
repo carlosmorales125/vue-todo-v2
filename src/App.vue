@@ -1,18 +1,17 @@
 <template>
   <div id="app">
-     <TodoListPage></TodoListPage>
+      <router-view name="header"/>
+      <div>
+          <router-view/>
+      </div>
+      <router-view name="footer"/>
   </div>
 </template>
 
 <script>
-import TodoListPage from './Pages/TodoListPage.vue'
-
 export default {
   name: 'app',
-  components: {
-    TodoListPage
-  }
-}
+};
 </script>
 
 <style>

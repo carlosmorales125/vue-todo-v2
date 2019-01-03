@@ -29,7 +29,7 @@
     </section>
 </template>
 <script>
-    import TodoListItem from '../TodoList/TodoListItem.vue';
+    import TodoListItem from './TodoListItem.vue';
 
     export default {
         name: 'todolist',
@@ -45,8 +45,8 @@
             },
             completeTodoListArray() {
                 return this.todoListArray.filter(item => item.done);
-            }
-        }
+            },
+        },
     };
 </script>
 <style>

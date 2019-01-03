@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-    import TodoList from '../components/TodoList/TodoList.vue';
+    import TodoList from '../components/todoList/TodoList.vue';
     import { EventBus } from '../event-bus';
 
     export default {
@@ -94,9 +94,9 @@
                         object.splice(index, 1);
                         return;
                     }
-                })
+                });
             });
-        }
+        },
     };
 </script>
 <style>
