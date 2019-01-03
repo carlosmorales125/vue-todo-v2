@@ -1,16 +1,19 @@
 <template>
     <div class="container">
+        <TodoListForm></TodoListForm>
         <TodoList :todoListArray="todoList"></TodoList>
     </div>
 </template>
 <script>
     import TodoList from '../components/todoList/TodoList.vue';
+    import TodoListForm from '../components/todoList/TodoListForm.vue';
     import { EventBus } from '../event-bus';
 
     export default {
         name: 'todolistpage',
         components: {
             TodoList,
+            TodoListForm,
         },
         data() {
             return {
@@ -94,6 +97,14 @@
                         object.splice(index, 1);
                         return;
                     }
+                });
+            });
+
+            EventBus.$on('addNewTask', newTaskDescription => {
+                this.todoList.push({
+                    id: new Date().valueOf(),
+                    description: newTaskDescription,
+                    done: false
                 });
             });
         },
