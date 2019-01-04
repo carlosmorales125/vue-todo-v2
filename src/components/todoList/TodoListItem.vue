@@ -5,6 +5,7 @@
                 <input class="input"
                        type="text"
                        v-model="localDescription"
+                       @keyup.prevent.enter="DoneEditing"
                 >
             </div>
             <div class="card-content" v-else>
@@ -15,19 +16,19 @@
             <footer class="card-footer">
                 <a href="#"
                    class="card-footer-item"
-                   @click="editing ? DoneEditing() : Edit()"
+                   @click.prevent="editing ? DoneEditing() : Edit()"
                 >
                     {{ editOrDoneText }}
                 </a>
                 <a href="#"
                    class="card-footer-item"
-                   @click="CompleteOrRestore"
+                   @click.prevent="CompleteOrRestore"
                 >
                     {{ completeOrRestoreText }}
                 </a>
                 <a href="#"
                    class="card-footer-item"
-                   @click="Delete"
+                   @click.prevent="Delete"
                 >
                     Delete
                 </a>

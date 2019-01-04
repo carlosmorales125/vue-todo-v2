@@ -6,7 +6,7 @@
                        type="text"
                        :placeholder="placeholderText"
                        v-model="newTaskDescription"
-                       @submit="AddNewTask"
+                       @keyup.enter="AddNewTask"
                 >
             </p>
             <p class="control">
