@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Todo from './pages/TodoListPage.vue';
+import Login from './pages/LoginPage.vue'
 import Header from './layout/Header.vue';
 import Footer from './layout/Footer.vue';
 
@@ -17,5 +18,14 @@ export default new Router({
                 footer: Footer,
             },
         },
+        {
+            path: '/login',
+            name: 'login',
+            components: {
+                default: Login,
+                header: Header,
+                footer: Footer,
+            },
+        }
     ],
 });

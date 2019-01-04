@@ -1,9 +1,9 @@
 <template>
   <div id="app" class="container">
       <router-view name="header"/>
-      <div>
+      <main>
           <router-view/>
-      </div>
+      </main>
       <router-view name="footer"/>
   </div>
 </template>
@@ -15,7 +15,15 @@ export default {
 </script>
 
 <style>
-#app {
+    #app {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
 
-}
+    main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
 </style>
