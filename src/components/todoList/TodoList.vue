@@ -1,6 +1,6 @@
 <template>
-    <section class="section">
-        <div class="container">
+    <div class="todo-list">
+        <div class="todo-list-incomplete">
             <h1 class="title">Incomplete Tasks</h1>
             <div class="columns is-multiline">
                 <TodoListItem v-for="item in incompleteTodoListArray"
@@ -13,7 +13,7 @@
                 </TodoListItem>
             </div>
         </div>
-        <div class="container">
+        <div class="todo-list-complete" v-if="completeTodoListArray.length">
             <h1 class="title">Complete Tasks</h1>
             <div class="columns is-multiline">
                 <TodoListItem v-for="item in completeTodoListArray"
@@ -26,7 +26,7 @@
                 </TodoListItem>
             </div>
         </div>
-    </section>
+    </div>
 </template>
 <script>
     import TodoListItem from './TodoListItem.vue';
@@ -50,11 +50,10 @@
     };
 </script>
 <style>
-    .container {
-        padding-top: 20px;
+    .todo-list-incomplete, todo-list-complete {
+        padding-bottom: 20px;
     }
-
-    .container:first-child {
-        padding-top: 0;
+    .todo-list {
+        padding-bottom: 40px;
     }
 </style>

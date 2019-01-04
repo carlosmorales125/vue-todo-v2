@@ -1,5 +1,5 @@
 <template>
-    <section class="section">
+    <div class="todo-list-form">
         <div class="field is-grouped">
             <p class="control is-expanded">
                 <input class="input"
@@ -17,7 +17,7 @@
                 </a>
             </p>
         </div>
-    </section>
+    </div>
 </template>
 <script>
     import { EventBus } from '../../event-bus';
@@ -39,5 +39,7 @@
     };
 </script>
 <style>
-
+    .todo-list-form {
+        margin-bottom: 40px;
+    }
 </style>

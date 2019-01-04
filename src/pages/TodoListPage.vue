@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="todo-list-page">
         <TodoListForm></TodoListForm>
         <TodoList :todoListArray="todoList"></TodoList>
     </div>
