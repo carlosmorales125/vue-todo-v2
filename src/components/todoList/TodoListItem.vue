@@ -16,7 +16,7 @@
             <footer class="card-footer">
                 <a href="#"
                    class="card-footer-item"
-                   @click.prevent="editing ? DoneEditing() : Edit()"
+                   @click.prevent="editWorkflow"
                 >
                     {{ editOrDoneText }}
                 </a>
@@ -73,6 +73,9 @@
             },
             editOrDoneText() {
                 return this.editing ? 'Done' : 'Edit';
+            },
+            editWorkflow() {
+                return this.editing ? this.DoneEditing() : this.Edit();
             },
         },
     };

@@ -23,8 +23,6 @@ export default new Router({
             name: 'login',
             components: {
                 default: Login,
-                header: Header,
-                footer: Footer,
             },
         }
     ],
