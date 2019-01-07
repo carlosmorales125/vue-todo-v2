@@ -1,22 +1,25 @@
 <template>
     <figure :class="logoClass">
-        <img :src="logoSrc">
+        <img :src="imageSrc">
     </figure>
 </template>
 <script>
     export default {
         name: 'logo',
         props: {
-            logoSrc: String,
-            logoSizeClass: String,
+            imageSrc: String,
+            imageClass: String,
         },
         data() {
             return {
-                logoClass: `image ${this.logoSizeClass}`,
+                logoClass: `image ${this.imageClass}`,
             };
         },
     };
 </script>
-<style>
-
+<style scoped>
+    .image {
+        margin: 0 10% 40px;
+        height: auto;
+    }
 </style>
