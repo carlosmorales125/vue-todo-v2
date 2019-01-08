@@ -1,5 +1,8 @@
 <template>
-    <div class="todo-list-form">
+    <form class="todo-list-form" @submit.prevent>
+        <div class="field">
+            <label class="label">Enter a New Task</label>
+        </div>
         <div class="field is-grouped">
             <p class="control is-expanded">
                 <input class="input"
@@ -17,7 +20,7 @@
                 </a>
             </p>
         </div>
-    </div>
+    </form>
 </template>
 <script>
     import { EventBus } from '../../event-bus';

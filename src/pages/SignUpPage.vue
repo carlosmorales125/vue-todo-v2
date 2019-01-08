@@ -2,8 +2,8 @@
     <div class="sign-up-page">
         <Logo :imageClass="imageClass"
               :imageSrc="imageSrc"
-        />
-        <SignUpForm/>
+        ></Logo>
+        <SignUpForm></SignUpForm>
     </div>
 </template>
 <script>

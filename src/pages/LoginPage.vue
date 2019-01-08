@@ -2,8 +2,8 @@
     <div class="login-page">
         <Logo :imageClass="imageClass"
               :imageSrc="imageSrc"
-        />
-        <LoginForm/>
+        ></Logo>
+        <LoginForm></LoginForm>
     </div>
 </template>
 <script>

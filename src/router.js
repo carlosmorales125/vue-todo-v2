@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Todo from './pages/TodoListPage.vue';
 import Login from './pages/LoginPage.vue';
 import SignUp from './pages/SignUpPage.vue';
+import Profile from './pages/ProfilePage.vue';
 import Header from './layout/Header.vue';
 import Footer from './layout/Footer.vue';
 
@@ -31,6 +32,15 @@ export default new Router({
             name: 'signup',
             components: {
                 default: SignUp,
+            },
+        },
+        {
+            path: '/profile',
+            name: 'profile',
+            components: {
+                default: Profile,
+                header: Header,
+                footer: Footer,
             },
         }
     ],

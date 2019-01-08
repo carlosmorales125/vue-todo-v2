@@ -110,6 +110,9 @@
         },
     };
 </script>
-<style>
-
+<style scoped>
+    .todo-list-page {
+        padding: 0 5%;
+        flex: 1;
+    }
 </style>
