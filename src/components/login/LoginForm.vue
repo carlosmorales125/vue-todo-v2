@@ -1,26 +1,22 @@
 <template>
     <form class="login-form" @submit.prevent>
         <div class="field">
-            <p class="control has-icons-left has-icons-right">
+            <p class="control">
                 <input class="input" type="email" placeholder="Email">
-                <span class="icon is-small is-left">
-        </span>
-                <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-            </p>
-        </div>
-        <div class="field">
-            <p class="control has-icons-left">
-                <input class="input" type="password" placeholder="Password">
-                <span class="icon is-small is-left">
-        </span>
             </p>
         </div>
         <div class="field">
             <p class="control">
-                <button class="button is-success">
+                <input class="input" type="password" placeholder="Password">
+            </p>
+        </div>
+        <div class="field">
+            <p class="control">
+                <button class="button is-link">
                     Login
+                </button>
+                <button class="button is-primary">
+                    Sign Up
                 </button>
             </p>
         </div>
@@ -31,10 +27,14 @@
         name: 'loginform',
     };
 </script>
-<style>
+<style scoped>
     .login-form {
-        flex: 1;
         padding: 0 10%;
     }
-
+    .button {
+        margin-right: 10px;
+    }
+    .field:nth-child(2) {
+        margin-bottom: 20px !important;
+    }
 </style>

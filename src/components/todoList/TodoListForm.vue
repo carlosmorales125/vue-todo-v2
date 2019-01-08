@@ -38,7 +38,7 @@
         },
     };
 </script>
-<style>
+<style scoped>
     .todo-list-form {
         margin-bottom: 40px;
     }

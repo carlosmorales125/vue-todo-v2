@@ -1,31 +1,31 @@
 <template>
-    <div class="login-page">
+    <div class="sign-up-page">
         <Logo :imageClass="imageClass"
               :imageSrc="imageSrc"
         />
-        <LoginForm/>
+        <SignUpForm/>
     </div>
 </template>
 <script>
-    import LoginForm from '../components/login/LoginForm.vue';
+    import SignUpForm from '../components/signUp/SignUpForm.vue';
     import Logo from '../components/Logo.vue';
 
     export default {
-        name: 'login',
+        name: 'signupform',
         components: {
-            LoginForm,
+            SignUpForm,
             Logo,
         },
         data() {
             return {
                 imageClass: 'is-3by1',
-                imageSrc: 'https://dummyimage.com/720x240/3273dc/ffffff.png&text=Todo+List+Logo',
+                imageSrc: 'https://dummyimage.com/720x240/3273dc/ffffff.png&text=Sign+Up+Logo',
             };
         },
     };
 </script>
 <style scoped>
-    .login-page {
+    .sign-up-page {
         flex: 1;
     }
 </style>
