@@ -28,4 +28,9 @@
     .sign-up-page {
         flex: 1;
     }
+    @media only screen and (min-width: 769px) {
+        .sign-up-page {
+            padding: 0 20%;
+        }
+    }
 </style>

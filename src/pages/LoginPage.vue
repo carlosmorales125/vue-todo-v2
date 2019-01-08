@@ -28,4 +28,9 @@
     .login-page {
         flex: 1;
     }
+    @media only screen and (min-width: 769px) {
+        .login-page {
+            padding: 0 20%;
+        }
+    }
 </style>
