@@ -60,6 +60,12 @@
     };
 </script>
 <style scoped>
+    .profile-item {
+        margin-bottom: 10px;
+    }
+    .profile-item .field {
+        margin-bottom: 0;
+    }
     .input-or-content {
         flex: 1;
     }

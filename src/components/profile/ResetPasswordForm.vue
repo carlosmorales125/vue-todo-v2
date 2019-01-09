@@ -1,6 +1,6 @@
 <template>
     <div class="reset-password-form">
-        <h2 class="title is-2">Password Reset</h2>
+        <h2 class="title is-3">Password Reset</h2>
         <form @submit.prevent>
             <div class="field">
                 <div class="control">
@@ -40,5 +40,10 @@
     };
 </script>
 <style>
-
+    .reset-password-form {
+        margin-bottom: 40px;
+    }
+    .reset-password-form .title {
+        text-align: center;
+    }
 </style>
