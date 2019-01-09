@@ -14,5 +14,9 @@
     };
 </script>
 <style>
-
+    .profile-image {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
 </style>

@@ -60,6 +60,9 @@
             Delete() {
                 EventBus.$emit('deleteTask', this.itemId);
             },
+            editWorkflow() {
+                return this.editing ? this.DoneEditing() : this.Edit();
+            },
         },
         data() {
             return {
@@ -73,9 +76,6 @@
             },
             editOrDoneText() {
                 return this.editing ? 'Done' : 'Edit';
-            },
-            editWorkflow() {
-                return this.editing ? this.DoneEditing() : this.Edit();
             },
         },
     };

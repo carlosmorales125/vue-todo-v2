@@ -1,24 +1,24 @@
 <template>
     <form class="login-form" @submit.prevent>
         <div class="field">
-            <p class="control">
+            <div class="control">
                 <input class="input" type="email" placeholder="Email">
-            </p>
+            </div>
         </div>
         <div class="field">
-            <p class="control">
+            <div class="control">
                 <input class="input" type="password" placeholder="Password">
-            </p>
+            </div>
         </div>
         <div class="field">
-            <p class="control">
+            <div class="control">
                 <button class="button is-link">
                     Login
                 </button>
                 <button class="button is-primary">
                     Sign Up
                 </button>
-            </p>
+            </div>
         </div>
     </form>
 </template>

@@ -7,9 +7,9 @@
             </div>
         </div>
         <div class="field">
-            <label class="label">Username</label>
+            <label class="label">Email</label>
             <div class="control">
-                <input class="input" type="text" placeholder="Enter Your Username">
+                <input class="input" type="email" placeholder="Enter Your Email">
             </div>
         </div>
         <div class="field">
@@ -25,14 +25,14 @@
             </div>
         </div>
         <div class="field">
-            <p class="control">
+            <div class="control">
                 <button class="button is-link">
                     Sign Up
                 </button>
                 <button class="button is-primary">
                     Go To Login
                 </button>
-            </p>
+            </div>
         </div>
     </form>
 </template>
