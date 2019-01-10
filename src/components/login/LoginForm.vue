@@ -12,12 +12,12 @@
         </div>
         <div class="field">
             <div class="control">
-                <button class="button is-link">
+                <button class="button is-link" @click.prevent="submitSignInForm">
                     Login
                 </button>
-                <button class="button is-primary">
+                <router-link to="/signup" class="button is-primary">
                     Sign Up
-                </button>
+                </router-link>
             </div>
         </div>
     </form>
@@ -25,6 +25,11 @@
 <script>
     export default {
         name: 'loginform',
+        methods: {
+            submitSignInForm() {
+                //todo: make this work
+            },
+        },
     };
 </script>
 <style scoped>

@@ -26,12 +26,12 @@
         </div>
         <div class="field">
             <div class="control">
-                <button class="button is-link">
+                <buttton class="button is-link" @click.prevent="submitSignUpForm">
                     Sign Up
-                </button>
-                <button class="button is-primary">
+                </buttton>
+                <router-link to="/login" class="button is-primary">
                     Go To Login
-                </button>
+                </router-link>
             </div>
         </div>
     </form>
@@ -39,6 +39,11 @@
 <script>
     export default {
         name: 'signupform',
+        methods: {
+            submitSignUpForm() {
+                // todo: make this work
+            },
+        },
     };
 </script>
 <style scoped>
