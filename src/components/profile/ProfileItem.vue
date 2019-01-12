@@ -34,6 +34,7 @@
             labelText: String,
             currentValue: String,
             inputType: String,
+            stateUpdateMethod: Function,
         },
         data() {
             return {
@@ -47,6 +48,7 @@
             },
             DoneEditing() {
                 this.editing = false;
+                this.stateUpdateMethod(this.localItemText);
             },
             editWorkflowTest() {
                 return this.editing ? this.DoneEditing() : this.Edit();
