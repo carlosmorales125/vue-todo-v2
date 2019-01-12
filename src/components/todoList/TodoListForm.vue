@@ -23,7 +23,7 @@
     </form>
 </template>
 <script>
-    import { EventBus } from '../../event-bus';
+    import { mapActions } from 'vuex';
 
     export default {
         name: 'todolistform',
@@ -34,8 +34,15 @@
             };
         },
         methods: {
+            ...mapActions({
+                addTask: 'addTask',
+            }),
             AddNewTask() {
-                EventBus.$emit('addNewTask', this.newTaskDescription);
+                this.addTask({
+                    id: new Date().valueOf(),
+                    description: this.newTaskDescription,
+                    done: false
+                });
                 this.newTaskDescription = '';
             },
         },

@@ -37,7 +37,7 @@
     </div>
 </template>
 <script>
-    import { EventBus } from '../../event-bus';
+    import { mapActions } from 'vuex';
 
     export default {
         name: 'todolistitem',
@@ -47,18 +47,23 @@
             complete: Boolean,
         },
         methods: {
+            ...mapActions({
+                editTask: 'editTask',
+                deleteTask: 'deleteTask',
+                completeOrRestoreTask: 'completeOrRestoreTask',
+            }),
             Edit() {
                 this.editing = true;
             },
             DoneEditing() {
-                EventBus.$emit('editTask', {id:this.itemId, description:this.localDescription});
+                this.editTask({ id:this.itemId, description:this.localDescription });
                 this.editing = false;
             },
             CompleteOrRestore() {
-                EventBus.$emit('completeOrRestoreTask', this.itemId);
+                this.completeOrRestoreTask(this.itemId);
             },
             Delete() {
-                EventBus.$emit('deleteTask', this.itemId);
+                this.deleteTask(this.itemId);
             },
             editWorkflow() {
                 return this.editing ? this.DoneEditing() : this.Edit();
