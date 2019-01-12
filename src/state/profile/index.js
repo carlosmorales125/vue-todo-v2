@@ -6,19 +6,19 @@ const ProfileModule = {
         },
     },
     mutations: {
-        changeName(state, name) {
-
+        changeName(state, { name }) {
+            state.profile.name = name;
         },
-        changeEmail(state, email) {
-
+        changeEmail(state, { email }) {
+            state.profile.email = email;
         },
     },
     actions: {
-        changeName({ context }, name) {
-
+        changeName({ context }, payload) {
+            context('changeName', payload);
         },
-        changeEmail({ context }, email) {
-
+        changeEmail({ context }, payload) {
+            context('changeEmail', payload);
         },
     },
 };
