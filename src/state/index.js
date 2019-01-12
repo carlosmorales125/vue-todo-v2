@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import TodoModule from './todo/index';
 
 Vue.use(Vuex);
 
@@ -11,6 +12,9 @@ const store = new Vuex.Store({
         increment (state) {
             state.count++
         }
+    },
+    modules: {
+        todo: TodoModule
     }
 });
 

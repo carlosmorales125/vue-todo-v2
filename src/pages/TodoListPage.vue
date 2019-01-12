@@ -8,6 +8,7 @@
     import TodoList from '../components/todoList/TodoList.vue';
     import TodoListForm from '../components/todoList/TodoListForm.vue';
     import { EventBus } from '../event-bus';
+    import { mapActions } from 'vuex';
 
     export default {
         name: 'todolistpage',
@@ -66,6 +67,11 @@
                 ]
             };
         },
+        methods: {
+            ...mapActions([
+                'addTask',
+            ]),
+        },
         mounted() {
             EventBus.$on('editTask', taskData => {
                 this.todoList.forEach(item => {
@@ -102,6 +108,11 @@
 
             EventBus.$on('addNewTask', newTaskDescription => {
                 this.todoList.push({
+                    id: new Date().valueOf(),
+                    description: newTaskDescription,
+                    done: false
+                });
+                this.addTask({
                     id: new Date().valueOf(),
                     description: newTaskDescription,
                     done: false
