@@ -39,9 +39,7 @@
             }),
             AddNewTask() {
                 this.addTask({
-                    id: new Date().valueOf(),
                     description: this.newTaskDescription,
-                    done: false
                 });
                 this.newTaskDescription = '';
             },

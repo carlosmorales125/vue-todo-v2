@@ -7,7 +7,7 @@
 <script>
     import TodoList from '../components/todoList/TodoList.vue';
     import TodoListForm from '../components/todoList/TodoListForm.vue';
-    import { mapState } from 'vuex';
+    import { mapState, mapActions } from 'vuex';
 
     export default {
         name: 'todolistpage',
@@ -18,6 +18,14 @@
         computed: mapState({
             todoList: state => state.todo.todoList,
         }),
+        methods: {
+            ...mapActions({
+                getTasks: 'getTasks',
+            }),
+        },
+        beforeMount() {
+            this.getTasks();
+        },
     };
 </script>
 <style scoped>

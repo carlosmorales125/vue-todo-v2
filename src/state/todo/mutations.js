@@ -1,6 +1,15 @@
 const mutations = {
-    addTask(state, task) {
-        state.todoList.push(task);
+    getTasks(state, tasks) {
+        state.todoList = tasks;
+    },
+    getTasksError(state, err) {
+        alert(err);
+    },
+    addTask(state, tasks) {
+        state.todoList = tasks;
+    },
+    addTaskError(state, err) {
+        alert(err);
     },
     editTask(state, { id, description }) {
         state.todoList.forEach(item => {
