@@ -5,8 +5,8 @@ const mutations = {
     getTasksError(state, err) {
         alert(err);
     },
-    addTask(state, tasks) {
-        state.todoList = tasks;
+    addTask(state, task) {
+        state.todoList.push(task);
     },
     addTaskError(state, err) {
         alert(err);
