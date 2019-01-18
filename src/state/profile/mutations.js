@@ -5,6 +5,10 @@ const mutations = {
         changeEmail(state, email) {
             state.user.email = email;
         },
+        createUser(state, { name, email }) {
+            state.user.name = name;
+            state.user.email = email;
+        }
 };
 
 export default mutations;
