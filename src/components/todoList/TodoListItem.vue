@@ -71,7 +71,10 @@
                 });
             },
             Delete() {
-                this.deleteTask(this.itemId);
+                this.deleteTask({
+                    id: this.itemId,
+                    userId: this.userId,
+                });
             },
             editWorkflow() {
                 return this.editing ? this.DoneEditing() : this.Edit();

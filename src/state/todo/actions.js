@@ -32,7 +32,13 @@ const actions = {
             });
     },
     deleteTask({ commit }, payload) {
-        commit('deleteTask', payload);
+        axios.delete(`http://localhost:3000/api/todo/deletetask/${payload.id}/${payload.userId}`, payload)
+            .then(() => {
+                commit('deleteTask', payload.id);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     },
     completeOrRestoreTask({ commit }, payload) {
         axios.put('http://localhost:3000/api/todo/completeorrestoretask', payload)

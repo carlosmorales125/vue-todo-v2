@@ -18,14 +18,14 @@ const mutations = {
     },
     editTask(state, { id, description }) {
         state.todoList.forEach(item => {
-            if (item.id === id) {
+            if (item._id === id) {
                 item.description = description;
             }
         });
     },
     deleteTask(state, id) {
         state.todoList.forEach((item, index, object) => {
-            if (item.id === id) {
+            if (item._id === id) {
                 object.splice(index, 1);
                 return;
             }
