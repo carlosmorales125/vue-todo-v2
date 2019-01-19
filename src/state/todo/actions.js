@@ -1,23 +1,25 @@
 import axios from 'axios';
 
 const actions = {
-    getTasks({ commit }) {
-        axios.get('http://localhost:3000/api/todo/todolist/fakefornow')
+    getTasks({ commit }, payload) {
+        axios.get(`http://localhost:3000/api/todo/todolist/${payload.userId}`)
             .then(resp => {
-                commit('getTasks', resp.data.todoList);
+                commit('getTasks', resp.data.list[0].todoList);
             })
             .catch(err => {
                 commit('getTasksError', err);
             });
     },
     addTask({ commit }, payload) {
-        axios.put('http://localhost:3000/api/todo/addtask/fakefornow', payload)
-            .then(resp => {
-                commit('addTask', resp.data);
-            })
-            .catch(err => {
-                commit('addTaskError', err);
-            });
+        return new Promise((resolve, reject) => {
+            axios.put('http://localhost:3000/api/todo/addtask', payload)
+                .then(() => {
+                    resolve();
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
     },
     editTask({ commit, state }, {id, description}) {
         const payload = {

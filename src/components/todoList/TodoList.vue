@@ -4,8 +4,8 @@
             <h1 class="title">Incomplete Tasks</h1>
             <div class="columns is-multiline">
                 <TodoListItem v-for="item in incompleteTodoListArray"
-                              :key="item.id"
-                              :itemId="item.id"
+                              :key="item._id"
+                              :itemId="item._id"
                               :complete="item.done"
                               :description="item.description"
                 >
@@ -17,8 +17,8 @@
             <h1 class="title">Complete Tasks</h1>
             <div class="columns is-multiline">
                 <TodoListItem v-for="item in completeTodoListArray"
-                              :key="item.id"
-                              :itemId="item.id"
+                              :key="item._id"
+                              :itemId="item._id"
                               :complete="item.done"
                               :description="item.description"
                 >

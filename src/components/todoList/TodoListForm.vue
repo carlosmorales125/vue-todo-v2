@@ -23,7 +23,7 @@
     </form>
 </template>
 <script>
-    import { mapActions } from 'vuex';
+    import { mapActions, mapState } from 'vuex';
 
     export default {
         name: 'todolistform',
@@ -33,14 +33,27 @@
                 newTaskDescription: '',
             };
         },
+        computed: mapState({
+            userId: state => state.profile.user.id
+        }),
         methods: {
             ...mapActions({
                 addTask: 'addTask',
+                getTasks: 'getTasks'
             }),
             AddNewTask() {
                 this.addTask({
+                    userId: this.userId,
                     description: this.newTaskDescription,
-                });
+                })
+                    .then(() => {
+                        this.getTasks({
+                            userId: this.userId
+                        });
+                    })
+                    .catch(() => {
+                        //need to code the unhappy result here.
+                    });
                 this.newTaskDescription = '';
             },
         },

@@ -17,6 +17,7 @@
         },
         computed: mapState({
             todoList: state => state.todo.todoList,
+            userId: state => state.profile.user.id
         }),
         methods: {
             ...mapActions({
@@ -24,7 +25,9 @@
             }),
         },
         beforeMount() {
-            this.getTasks();
+            this.getTasks({
+                userId: this.userId
+            });
         },
     };
 </script>

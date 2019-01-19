@@ -43,7 +43,7 @@
         name: 'todolistitem',
         props: {
             description: String,
-            itemId: Number,
+            itemId: String,
             complete: Boolean,
         },
         methods: {
