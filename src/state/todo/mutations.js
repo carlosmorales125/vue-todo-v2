@@ -5,8 +5,13 @@ const mutations = {
     getTasksError(state, err) {
         alert(err);
     },
-    addTask(state, task) {
-        state.todoList.push(task);
+    addTask(state, { description, done }) {
+        let _id = `fakeForNow ${new Date().getTime()}`;
+        state.todoList.push({
+            _id,
+            description,
+            done
+        });
     },
     addTaskError(state, err) {
         alert(err);
@@ -28,7 +33,7 @@ const mutations = {
     },
     completeOrRestoreTask(state, id) {
         state.todoList.forEach(item => {
-            if (item.id === id) {
+            if (item._id === id) {
                 if (!item.done) {
                     item.done = true;
                     return;

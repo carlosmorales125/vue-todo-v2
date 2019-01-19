@@ -37,7 +37,7 @@
     </div>
 </template>
 <script>
-    import { mapActions } from 'vuex';
+    import { mapActions, mapState } from 'vuex';
 
     export default {
         name: 'todolistitem',
@@ -56,11 +56,19 @@
                 this.editing = true;
             },
             DoneEditing() {
-                this.editTask({ id:this.itemId, description:this.localDescription });
+                this.editTask({
+                    userId: this.userId,
+                    id: this.itemId,
+                    description: this.localDescription,
+                });
                 this.editing = false;
             },
             CompleteOrRestore() {
-                this.completeOrRestoreTask(this.itemId);
+                this.completeOrRestoreTask({
+                    userId: this.userId,
+                    id: this.itemId,
+                    done: !this.complete
+                });
             },
             Delete() {
                 this.deleteTask(this.itemId);
@@ -82,6 +90,9 @@
             editOrDoneText() {
                 return this.editing ? 'Done' : 'Edit';
             },
+            ...mapState({
+                userId: state => state.profile.user.id
+            }),
         },
     };
 </script>

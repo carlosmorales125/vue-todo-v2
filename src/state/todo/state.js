@@ -1,11 +1,5 @@
 const state = {
-    todoList: [
-        {
-            id: 1,
-            description: "this comes from the store boii!",
-            done: false
-        },
-    ],
+    todoList: [],
 };
 
 export default state;
