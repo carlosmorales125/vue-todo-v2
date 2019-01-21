@@ -1,5 +1,6 @@
 import axios from 'axios';
-import router from '../../router';
+import { router } from '../../router';
+import { authHeader } from '../../_helpers';
 
 const actions = {
         changeName({ commit }, payload) {
@@ -10,9 +11,8 @@ const actions = {
         },
         createUser({ commit }, payload) {
             axios.post('http://localhost:3000/api/users/createuser', payload)
-                .then(resp => {
-                    commit('loadUser', resp.data);
-                    router.push('/');
+                .then(() => {
+                    router.push('/login');
                 })
                 .catch(err => {
                     console.log(err);
@@ -21,12 +21,17 @@ const actions = {
         login({ commit }, payload) {
             axios.post('http://localhost:3000/api/users/login', payload)
                 .then(resp => {
+                    localStorage.setItem('__vue__todo__app__user__', JSON.stringify(resp.data));
                     commit('loadUser', resp.data);
                     router.push('/');
                 })
                 .catch(err => {
                     console.log(err);
                 });
+        },
+        logout({ commit }) {
+            localStorage.removeItem('__vue__todo__app__user__');
+            commit('unloadUser');
         }
 };
 

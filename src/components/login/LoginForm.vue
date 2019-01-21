@@ -36,7 +36,7 @@
         methods: {
             submitSignInForm() {
                 this.login({
-                    username: this.email,
+                    email: this.email,
                     password: this.password
                 });
             },

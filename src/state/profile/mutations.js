@@ -10,6 +10,11 @@ const mutations = {
             state.user.name = name;
             state.user.email = email;
         },
+        unloadUser(state) {
+            state.user.id = '';
+            state.user.name = '';
+            state.user.email = '';
+        },
 };
 
 export default mutations;

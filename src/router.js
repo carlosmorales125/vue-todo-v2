@@ -9,7 +9,7 @@ import Footer from './layout/Footer.vue';
 
 Vue.use(Router);
 
-export default new Router({
+export const router = new Router({
     routes: [
         {
             path: '/',
@@ -44,4 +44,17 @@ export default new Router({
             },
         }
     ],
+});
+
+router.beforeEach((to, from, next) => {
+    // redirect to login page if not logged in and trying to access a restricted page
+    const publicPages = ['/login', '/signup'];
+    const authRequired = !publicPages.includes(to.path);
+    const loggedIn = localStorage.getItem('__vue__todo__app__user__');
+
+    if (authRequired && !loggedIn) {
+        return next('/login');
+    }
+
+    next();
 });
