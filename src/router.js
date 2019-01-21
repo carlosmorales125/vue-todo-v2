@@ -6,6 +6,7 @@ import SignUp from './pages/SignUpPage.vue';
 import Profile from './pages/ProfilePage.vue';
 import Header from './layout/Header.vue';
 import Footer from './layout/Footer.vue';
+import store from './state/index';
 
 Vue.use(Router);
 
@@ -50,11 +51,14 @@ router.beforeEach((to, from, next) => {
     // redirect to login page if not logged in and trying to access a restricted page
     const publicPages = ['/login', '/signup'];
     const authRequired = !publicPages.includes(to.path);
-    const loggedIn = localStorage.getItem('__vue__todo__app__user__');
+    const loggedIn = JSON.parse(localStorage.getItem('__vue__todo__app__user__'));
 
     if (authRequired && !loggedIn) {
         return next('/login');
+    } else {
+        if (loggedIn) {
+            store.commit('loadUser', loggedIn);
+        }
     }
-
     next();
 });

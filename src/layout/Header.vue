@@ -22,7 +22,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <button class="button is-primary">
+                        <button class="button is-primary" @click="logout">
                             Log Out
                         </button>
                     </div>
@@ -32,8 +32,15 @@
     </header>
 </template>
 <script>
+    import { mapActions } from 'vuex';
+
     export default {
         name: 'mainnav',
+        methods: {
+            ...mapActions({
+                logout: 'logout'
+            })
+        }
     };
 </script>
 <style>

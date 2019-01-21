@@ -18,6 +18,21 @@ const actions = {
                     console.log(err);
                 });
         },
+        testJWT() {
+            return new Promise((resolve, reject) => {
+                axios.get('http://localhost:3000/api/users/testjwt', { headers: authHeader()} )
+                    .then(resp => {
+                        if (resp.status === 200) {
+                            resolve(true);
+                        } else {
+                            reject();
+                        }
+                    })
+                    .catch(() => {
+                        reject();
+                    });
+            });
+        },
         login({ commit }, payload) {
             axios.post('http://localhost:3000/api/users/login', payload)
                 .then(resp => {
@@ -32,6 +47,7 @@ const actions = {
         logout({ commit }) {
             localStorage.removeItem('__vue__todo__app__user__');
             commit('unloadUser');
+            router.push('/login');
         }
 };
 
