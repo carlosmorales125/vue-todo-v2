@@ -2,12 +2,12 @@
     <form class="login-form" @submit.prevent>
         <div class="field">
             <div class="control">
-                <input class="input" type="email" placeholder="Email">
+                <input class="input" type="email" placeholder="Email" v-model="email">
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <input class="input" type="password" placeholder="Password">
+                <input class="input" type="password" placeholder="Password" v-model="password">
             </div>
         </div>
         <div class="field">
@@ -23,12 +23,26 @@
     </form>
 </template>
 <script>
+    import { mapActions } from 'vuex';
+
     export default {
         name: 'loginform',
+        data() {
+            return {
+                email: '',
+                password: '',
+            };
+        },
         methods: {
             submitSignInForm() {
-                //todo: make this work
+                this.login({
+                    username: this.email,
+                    password: this.password
+                });
             },
+            ...mapActions({
+                login: 'login',
+            }),
         },
     };
 </script>
