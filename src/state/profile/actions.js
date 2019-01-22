@@ -1,13 +1,16 @@
 import axios from 'axios';
 import { router } from '../../router';
-import { authHeader } from '../../_helpers';
+import { authHeader, setLocalUser, removeLocalUser } from '../../_helpers';
 
 const actions = {
         changeName({ commit }, payload) {
-            commit('changeName', payload);
             axios.post('http://localhost:3000/api/users/changename', payload, { headers: authHeader()})
                 .then(resp => {
-                    if (resp.status === 200) commit('changeName', payload);
+                    if (resp.status === 200) {
+                        removeLocalUser();
+                        setLocalUser(resp.data)
+                        commit('changeName', resp.data);
+                    }
                 })
                 .catch(err => {
                     console.dir(err);
@@ -18,8 +21,9 @@ const actions = {
         },
         createUser({ commit }, payload) {
             axios.post('http://localhost:3000/api/users/createuser', payload)
-                .then(() => {
-                    router.push('/login');
+                .then(resp => {
+                    if (resp.status === 200) router.push('/login');
+                    // todo: Code a success message to be displayed on the login page.
                 })
                 .catch(err => {
                     console.dir(err);
@@ -28,16 +32,18 @@ const actions = {
         login({ commit }, payload) {
             axios.post('http://localhost:3000/api/users/login', payload)
                 .then(resp => {
-                    localStorage.setItem('__vue__todo__app__user__', JSON.stringify(resp.data));
-                    commit('loadUser', resp.data);
-                    router.push('/');
+                    if (resp.status === 200) {
+                        setLocalUser(resp.data);
+                        commit('loadUser', resp.data);
+                        router.push('/');
+                    }
                 })
                 .catch(err => {
                     console.dir(err);
                 });
         },
         logout({ commit }) {
-            localStorage.removeItem('__vue__todo__app__user__');
+            removeLocalUser();
             commit('unloadUser');
             router.push('/login');
         }

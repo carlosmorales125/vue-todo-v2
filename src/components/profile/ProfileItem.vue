@@ -28,6 +28,8 @@
     </div>
 </template>
 <script>
+    import { mapState } from 'vuex';
+
     export default {
         name: 'profileitem',
         props: {
@@ -48,7 +50,10 @@
             },
             DoneEditing() {
                 this.editing = false;
-                this.stateUpdateMethod(this.localItemText);
+                this.stateUpdateMethod({
+                    id: this.id,
+                    description: this.localItemText,
+                });
             },
             editWorkflowTest() {
                 return this.editing ? this.DoneEditing() : this.Edit();
@@ -58,6 +63,9 @@
             editOrDoneText() {
                 return this.editing ? 'Done' : 'Edit';
             },
+            ...mapState({
+                id: state => state.profile.user.id
+            }),
         },
     };
 </script>

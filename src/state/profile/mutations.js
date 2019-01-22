@@ -1,6 +1,6 @@
 const mutations = {
-        changeName(state, name) {
-            state.user.name = name;
+        changeName(state, { description }) {
+            state.user.name = description;
         },
         changeEmail(state, email) {
             state.user.email = email;
