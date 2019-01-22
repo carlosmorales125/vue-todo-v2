@@ -5,6 +5,13 @@ import { authHeader } from '../../_helpers';
 const actions = {
         changeName({ commit }, payload) {
             commit('changeName', payload);
+            axios.post('http://localhost:3000/api/users/changename', payload, { headers: authHeader()})
+                .then(resp => {
+                    if (resp.status === 200) commit('changeName', payload);
+                })
+                .catch(err => {
+                    console.dir(err);
+                });
         },
         changeEmail({ commit }, payload) {
             commit('changeEmail', payload);
@@ -15,23 +22,8 @@ const actions = {
                     router.push('/login');
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.dir(err);
                 });
-        },
-        testJWT() {
-            return new Promise((resolve, reject) => {
-                axios.get('http://localhost:3000/api/users/testjwt', { headers: authHeader()} )
-                    .then(resp => {
-                        if (resp.status === 200) {
-                            resolve(true);
-                        } else {
-                            reject();
-                        }
-                    })
-                    .catch(() => {
-                        reject();
-                    });
-            });
         },
         login({ commit }, payload) {
             axios.post('http://localhost:3000/api/users/login', payload)
@@ -41,7 +33,7 @@ const actions = {
                     router.push('/');
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.dir(err);
                 });
         },
         logout({ commit }) {

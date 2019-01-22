@@ -29,7 +29,7 @@ const actions = {
                 commit('editTask', {id: payload.id, description: payload.description});
             })
             .catch(err => {
-                console.log(err);
+                console.dir(err);
             });
     },
     deleteTask({ commit }, payload) {
@@ -38,7 +38,7 @@ const actions = {
                 commit('deleteTask', payload.id);
             })
             .catch(err => {
-                console.log(err);
+                console.dir(err);
             });
     },
     completeOrRestoreTask({ commit }, payload) {
@@ -47,7 +47,7 @@ const actions = {
                 commit('completeOrRestoreTask', payload.id);
             })
             .catch(err => {
-                console.log(err);
+                console.dir(err);
             });
     },
 };

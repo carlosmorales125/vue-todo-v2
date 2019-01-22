@@ -56,6 +56,8 @@ router.beforeEach((to, from, next) => {
     if (authRequired && !loggedIn) {
         return next('/login');
     } else {
+        // We load the user from localStorage if not it's not already loaded
+        // This takes care of the user refreshing the page.
         if (loggedIn) {
             store.commit('loadUser', loggedIn);
         }
