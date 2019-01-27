@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { authHeader } from '../../_helpers';
+import { authHeader, handleAxiosErrors } from '../../_helpers';
 
 const actions = {
     getTasks({ commit }, payload) {
@@ -29,7 +29,7 @@ const actions = {
                 commit('editTask', {id: payload.id, description: payload.description});
             })
             .catch(err => {
-                console.dir(err);
+                handleAxiosErrors(err);
             });
     },
     deleteTask({ commit }, payload) {
@@ -38,7 +38,7 @@ const actions = {
                 commit('deleteTask', payload.id);
             })
             .catch(err => {
-                console.dir(err);
+                handleAxiosErrors(err);
             });
     },
     completeOrRestoreTask({ commit }, payload) {
@@ -47,7 +47,7 @@ const actions = {
                 commit('completeOrRestoreTask', payload.id);
             })
             .catch(err => {
-                console.dir(err);
+                handleAxiosErrors(err);
             });
     },
 };

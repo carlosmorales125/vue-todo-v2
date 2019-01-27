@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { router } from '../../router';
-import { authHeader, setLocalUser, removeLocalUser } from '../../_helpers';
+import {
+    authHeader,
+    setLocalUser,
+    removeLocalUser,
+    handleAxiosErrors
+} from '../../_helpers';
 
 const actions = {
         changeName({ commit }, payload) {
@@ -13,8 +18,20 @@ const actions = {
                     }
                 })
                 .catch(err => {
-                    console.dir(err);
+                    handleAxiosErrors(err);
                 });
+        },
+        async changePassword({ commit }, payload) {
+            try {
+                const resp = await axios.post(
+                    'http://localhost:3000/api/users/changepassword',
+                    payload,
+                    { headers: authHeader() }
+                );
+                commit('loadUser', resp.data);
+            } catch (e) {
+                handleAxiosErrors(e);
+            }
         },
         changeEmail({ commit }, payload) {
             commit('changeEmail', payload);
@@ -26,7 +43,7 @@ const actions = {
                     // todo: Code a success message to be displayed on the login page.
                 })
                 .catch(err => {
-                    console.dir(err);
+                    handleAxiosErrors(err);
                 });
         },
         login({ commit }, payload) {
@@ -39,7 +56,7 @@ const actions = {
                     }
                 })
                 .catch(err => {
-                    console.dir(err);
+                    handleAxiosErrors(err);
                 });
         },
         logout({ commit }) {
