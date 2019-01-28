@@ -51,7 +51,7 @@
     </div>
 </template>
 <script>
-    import { mapActions } from 'vuex';
+    import { mapActions, mapState } from 'vuex';
 
     export default {
         name: 'resetpasswordform',
@@ -61,6 +61,7 @@
             }),
             submitChangePassword() {
                 this.changePassword({
+                    id: this.id,
                     currentPassword: this.currentPassword,
                     password: this.newPassword,
                     confirmPassword: this.confirmNewPassword
@@ -73,7 +74,12 @@
                 newPassword: '',
                 confirmNewPassword: '',
             };
-        }
+        },
+        computed: {
+            ...mapState({
+                id: state => state.profile.user.id
+            })
+        },
     };
 </script>
 <style>
